@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ThrowException.CSharpLibs.DataObjectLib;
 
 namespace ThrowException.CSharpLibs.DatabaseObjectLib
 {
@@ -179,6 +180,11 @@ namespace ThrowException.CSharpLibs.DatabaseObjectLib
                     }
                 }
             }
+        }
+
+        public object Load<T>(bool v)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<T> Load<T>(Condition condition) where T : DatabaseObject, new()

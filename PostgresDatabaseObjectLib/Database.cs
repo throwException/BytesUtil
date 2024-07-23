@@ -8,6 +8,7 @@ using Npgsql;
 using NpgsqlTypes;
 using ThrowException.CSharpLibs.BytesUtilLib;
 using ThrowException.CSharpLibs.TypeParserLib;
+using ThrowException.CSharpLibs.DataObjectLib;
 
 namespace ThrowException.CSharpLibs.PostgresDatabaseObjectLib
 {
@@ -741,6 +742,11 @@ namespace ThrowException.CSharpLibs.PostgresDatabaseObjectLib
             var command = new NpgsqlCommand(text, _connection, ToTransaction(transaction));
             command.Parameters.AddRange(dbCondition.Parameters.ToArray());
             return (long)command.ExecuteScalar();
+        }
+
+        public IDataContext<DatabaseObject> CreateContext()
+        {
+            return new DatabaseContext(this);
         }
     }
 
